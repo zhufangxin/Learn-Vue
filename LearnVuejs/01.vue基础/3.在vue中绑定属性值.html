@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="按钮1" title="固定title" id="固定id">
+        <input type="button" value="按钮2" v-bind:title="btnTitle" v-bind:id="customIdName">
+        <input type="button" value="按钮3" v-bind:title="btnTitle" v-bind:id="customIdName+'这是一个文本内容'">
+        <input type="button" value="按钮4" :title="btnTitle" :id="customIdName"> 
+        <!--v-bind可以为元素属性绑定数据-->
+        <!--可以简写省略v-bind,只写 :属性，推荐简写-->
+        <!--v-bind中如果想要实现表达式的拼接，被拼接的字符串一定要用引号包起来，否则会被当做变量解析-->
+    </div>
+    <script>
+        const vm=new Vue({
+            el:"#app",
+            data:{
+                btnTitle:"这是按钮的自定义title值",
+                customIdName:"这是我自定义的id名"
+            }
+        })
+    </script>
+</body>
+</html>

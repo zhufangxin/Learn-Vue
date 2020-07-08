@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        [v-cloak]{
+            display:none;
+        } 
+    </style>
+</head>
+
+<body>
+    <!--1. 使用插值表达式存在闪烁的问题，但是v-text指令没有闪烁问题.
+        2. 插值表达式中可以使用'v-cloak'解决闪烁问题,渲染结束v-cloak自动移除
+        3. 插值表达式只会插入内容并不会清除其余的内容；v-text会把元素中之前的内容都清空，只保留v-text属性中的内容-->
+    <div id="app">
+        <h3 v-cloak>-----{{msg}}-------</h3>
+        <hr>
+        <h3 v-text="msg">12345678</h3>
+
+        <div>{{msg2}}</div>
+        <div v-text="msg2"></div>
+        <div v-html="msg2"></div> <!--要渲染的内容包括html标签，用v-html属性替代v-text-->
+    </div>
+    <script>
+        const vm=new Vue({
+        el:"#app",
+        data:{
+            msg:"今天天气真好啊",
+            msg2:'<h6>这是一个小标题</h6>'
+        }
+    })
+    </script>
+    
+</body>
+</html>

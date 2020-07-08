@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!--创建一个容器，将来使用vue就可以控制DOM里所有元素了-->
+    <div id="app">{{msg+"123"}} 
+    <!--注意：{{}}语法只能使用在元素标签内容区，不能在属性中使用。在赋值表达式中可以写任何的合法的JS表达式-->   
+        <h3 v-text="msg"></h3> 
+        <!--这里使用的v-text属性语法叫指令-->
+        <!--在vue中，所有的指令都是属性，vue的指令都是以v-开头的-->
+    </div>
+
+    <script>
+        const vm=new Vue({  //new Vue得到的VM实例，就是MVVM中的核心 VM，它提供了双向绑定的能力
+            el:"#app",//指定当前要创建的vm实例控制页面上哪个区域 element，此处el属性就是MVVM中的V视图层
+            data:{ //data是一个对象，表示要渲染的数据。此处的data属性就是MVVM中的第一个M,视图数据层
+                msg:"HELLO"
+            }
+        })
+    </script>
+</body>
+</html>
