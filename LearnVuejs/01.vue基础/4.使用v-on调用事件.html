@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--vue中提供了v-on:来为元素绑定事件-->
+        <!--绑定的事件处理函数必须绑定到VM实例的methods属性中-->
+        <!--v-on:click可以简写成 @click-->
+        <input type="button" value="点击一下瘦10斤" @click="add">
+        <!-- <input type="button" value="点击一下瘦10斤" v-on:click="add"> -->
+        <h3>当前体重值：{{weight}}</h3>
+    </div>
+
+    <script>
+        const vm=new Vue({
+            el:"#app",
+            data:{
+                weight:200
+            },
+            methods:{ //对象，这个method属性中可以定义多个事件
+                add() {  //对象中定义函数属性的简写形式
+                    this.weight-=10
+                    //在mthods中要是想访问data中的值,要用this.***来访问
+                    //当data中的数据变化之后，会被vm调度者监听到，并自动把最新的数据应用到页面上
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
